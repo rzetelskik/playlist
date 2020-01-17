@@ -35,8 +35,8 @@ class Player {
 private:
 
 public:
-    const std::shared_ptr<const IMedia> openFile(const File &file); //TODO check consts
-    const std::shared_ptr<const Playlist> createPlaylist(const std::string name);
+    std::shared_ptr<const IMedia> openFile(const File &file); //TODO check consts
+    std::shared_ptr<const Playlist> createPlaylist(const std::string& name);
 };
 
 #endif //LIB_PLAYLIST_H

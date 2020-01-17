@@ -30,9 +30,9 @@ int main() {
     mishmash->play();
 
     std::cout << "=== Playing 'mishmash' (removed cabaret and last direstraits, odd-even mode)" << std::endl;
+    mishmash->setMode(createOddEvenMode());
     mishmash->remove(0);
     mishmash->remove();
-    mishmash->setMode(createOddEvenMode());
     mishmash->play();
 
     std::cout << "=== Playing 'mishmash' (sequence mode, 'armstrong' odd-even mode)" << std::endl;

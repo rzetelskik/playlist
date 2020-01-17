@@ -6,6 +6,8 @@
 class Audio : public IMedia {
 private:
 public:
+    explicit Audio(const std::string &name) : IMedia(name) {};
+    ~Audio() = default;
     void play() override;
 };
 

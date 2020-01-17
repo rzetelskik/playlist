@@ -9,7 +9,7 @@ private:
     const std::string name;
 public:
     explicit IMedia(std::string name) : name(std::move(name)) {};
-    virtual ~IMedia() = 0;
+    virtual ~IMedia() {};
     virtual void play() = 0;
 };
 

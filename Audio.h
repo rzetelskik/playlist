@@ -4,7 +4,9 @@
 #include "IMedia.h"
 
 class Audio : public IMedia {
-
+private:
+public:
+    void play() override;
 };
 
 

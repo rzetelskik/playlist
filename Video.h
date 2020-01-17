@@ -4,7 +4,8 @@
 #include "IMedia.h"
 
 class Video : public IMedia {
-
+public:
+    void play() override;
 };
 
 

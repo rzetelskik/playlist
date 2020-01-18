@@ -13,6 +13,7 @@ void FileParser::inspect(const std::string input) {
     static const std::regex fileRgx(fileTypeFormat + metaDataFormat + arbitraryFileContentFormat);
     static const std::regex fileAndContentRgx(fileTypeFormat + metaDataFormat + structuredFileContentFormat);
     std::smatch sm;
+
     if (!std::regex_match(input, fileRgx)) {
         throw InvalidFileFormatException();
     }
@@ -47,7 +48,7 @@ std::map<std::string, std::string> FileParser::extractMetaData(const std::string
 
 std::string extractContent(const std::string input) {
     static const std::string contentSearchFormat = ".*\\|(.*)";
-    std::regex contentSearchRgx(contentSearchFormat);
+    static const std::regex contentSearchRgx(contentSearchFormat);
     std::smatch contentMatch;
     std::regex_search(input, contentMatch, contentSearchRgx);
     return contentMatch.str(1);

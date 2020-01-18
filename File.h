@@ -2,10 +2,13 @@
 #define PLAYLIST_FILE_H
 
 #include <string>
+#include <map>
 
 class File {
 private:
-    const std::string description;
+//    const std::string description;
+    std::map<std::string, std::string> metaData;
+    std::string type;
 public:
     explicit File(std::string str) : description(std::move(str)) {};
 };

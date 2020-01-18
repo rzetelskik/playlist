@@ -45,3 +45,11 @@ std::map<std::string, std::string> FileParser::extractMetaData(const std::string
     return dataMap;
 }
 
+std::string FileParser::extractContent(const std::string input) {
+    static const std::string contentSearchFormat = ".*\\|(.*)";
+    std::regex contentSearchRgx(contentSearchFormat);
+    std::smatch contentMatch;
+    std::regex_search(input, contentMatch, contentSearchRgx);
+    return contentMatch.str(1);
+}
+

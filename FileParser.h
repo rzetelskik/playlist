@@ -5,15 +5,16 @@
 #include <map>
 
 class FileParser {
+private:
+
 public:
+    FileParser() = default;
+    ~FileParser() = default;
     void inspect(std::string input);
-
     std::string deduceType(std::string input);
-
     std::map<std::string, std::string> extractMetaData(std::string input); //TODO moze sharedPtr? (nie znam sie wiec jak na razie w return robi sie kopia)
-
     std::string extractContent(std::string input);
-}
+};
 
 class InvalidFileFormatException : public std::exception {
 };

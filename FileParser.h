@@ -12,6 +12,8 @@ public:
 
     std::map<std::string, std::string>
     extractMetaData(std::string input); //TODO moze sharedPtr? (nie znam sie wiec jak na razie w return robi sie kopia)
+    
+    std::string extractContent(std::string input);
 };
 
 class InvalidFileFormatException : public std::exception {

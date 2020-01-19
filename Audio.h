@@ -1,12 +1,13 @@
 #ifndef PLAYLIST_AUDIO_H
 #define PLAYLIST_AUDIO_H
 
+#include "Playable.h"
 #include "IMedia.h"
 
 class Audio : public IMedia {
 private:
 public:
-    explicit Audio(const std::string &name) : IMedia(name) {};
+    using IMedia::IMedia;
     ~Audio() = default;
     void play() override;
 };

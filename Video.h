@@ -5,7 +5,7 @@
 
 class Video : public IMedia {
 public:
-    explicit Video(const std::string &name) : IMedia(name) {};
+    using IMedia::IMedia;
     ~Video() override = default;
     void play() override;
 };

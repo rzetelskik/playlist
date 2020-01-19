@@ -1,10 +1,10 @@
 #include "Playlist.h"
 
-void Playlist::add(const std::shared_ptr<IMedia> &element) {
+void Playlist::add(const std::shared_ptr<Playable> &element) {
     vector.push_back(element);
 }
 
-void Playlist::add(const std::shared_ptr<IMedia> &element, size_t position) {
+void Playlist::add(const std::shared_ptr<Playable> &element, size_t position) {
     auto it = vector.emplace(vector.begin() + position, element);
 }
 

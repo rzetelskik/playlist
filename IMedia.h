@@ -1,16 +1,24 @@
+//
+// Created by bartosz on 1/19/20.
+//
+
 #ifndef PLAYLIST_IMEDIA_H
 #define PLAYLIST_IMEDIA_H
 
-#include <string>
-#include <utility>
+#include <iostream>
+#include <map>
+#include "Playable.h"
 
-class IMedia {
-private:
-    const std::string name;
+
+class IMedia : public Playable { //TODO moze virtual inheritance tutaj?
+protected:
+    std::map<std::string, std::string> metaData;
+    std::string content;
 public:
-    explicit IMedia(std::string name) : name(std::move(name)) {};
-    virtual ~IMedia() {};
-    virtual void play() = 0;
+    virtual void play();
+
+    IMedia(std::map<std::string, std::string> metaData, std::string content) :
+            metaData(metaData), content(content) {};
 };
 
 

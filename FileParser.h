@@ -3,17 +3,19 @@
 
 #include <iostream>
 #include <map>
+#include "File.h"
+
 
 class FileParser {
+private:
+    void inspect(const std::string &input);
+    std::string deduceType(const std::string &input);
+    std::map<std::string, std::string> extractMetaData(const std::string &input); //TODO moze sharedPtr? (nie znam sie wiec jak na razie w return robi sie kopia)
+    std::string extractContent(const std::string &input);
 public:
-    void inspect(std::string input);
-
-    std::string deduceType(std::string input);
-
-    std::map<std::string, std::string>
-    extractMetaData(std::string input); //TODO moze sharedPtr? (nie znam sie wiec jak na razie w return robi sie kopia)
-
-    std::string extractContent(std::string input);
+    FileParser() = default;
+    ~FileParser() = default;
+    std::tuple<std::string, std::map<std::string, std::string>, std::string> parseFile(const File &file);
 };
 
 class InvalidFileFormatException : public std::exception {

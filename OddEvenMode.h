@@ -7,7 +7,7 @@ class OddEvenMode : IPlayMode {
 public:
     OddEvenMode() = default;
     ~OddEvenMode() = default;
-    void play(const std::vector<std::shared_ptr<IMedia>> &medias) override;
+    void play(const std::vector<std::shared_ptr<Playable>> &medias) override;
 };
 
 std::shared_ptr<OddEvenMode> createOddEvenMode();

@@ -4,6 +4,8 @@
 #include "IPlayMode.h"
 
 class OddEvenMode : public IPlayMode {
+private:
+    void playEveryOther(size_t start, const std::vector<std::shared_ptr<IPlayable>> &medias);
 public:
     OddEvenMode() = default;
     ~OddEvenMode() = default;

@@ -25,7 +25,7 @@ private:
 public:
     Player() = default;
     ~Player() = default;
-    std::shared_ptr<IMedia> openFile(const File &file); //TODO check consts
+    std::shared_ptr<IMedia> openFile(const File &file);
     std::shared_ptr<Playlist> createPlaylist(const std::string &name);
 };
 

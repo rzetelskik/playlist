@@ -4,7 +4,6 @@
 #include "IMedia.h"
 #include <utility>
 
-//TODO szyfrowanie
 class Video : public IMedia {
 private:
     FileContent decodeROT13(const FileContent &content);

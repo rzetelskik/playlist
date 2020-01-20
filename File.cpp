@@ -37,7 +37,9 @@ void File::extractMetaData(const std::string &input) {
     while (std::regex_search(log, dataMatch, dataFieldRgx)) {
         std::string name = dataMatch.str(1);
         std::string value = dataMatch.str(2);
-        metaData.insert({name, value});
+        auto result = metaData.insert({name, value});
+        if (!result.second) result.first->second = value;
+
         log = dataMatch.suffix();
     }
 }

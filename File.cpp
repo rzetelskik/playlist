@@ -29,7 +29,6 @@ void File::deduceType(const std::string &input) {
 }
 
 void File::extractMetaData(const std::string &input) {
-    std::map<std::string, std::string> dataMap;
     static const std::string dataFieldFormat = "\\|([^:]*):([^\\|]*)";
     static const std::regex dataFieldRgx(dataFieldFormat);
     std::string log = input;
@@ -38,11 +37,9 @@ void File::extractMetaData(const std::string &input) {
     while (std::regex_search(log, dataMatch, dataFieldRgx)) {
         std::string name = dataMatch.str(1);
         std::string value = dataMatch.str(2);
-        dataMap.insert({name, value});
+        metaData.insert({name, value});
         log = dataMatch.suffix();
     }
-
-    metaData = dataMap;
 }
 
 void File::extractContent(const std::string &input) {

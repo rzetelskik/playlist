@@ -1,8 +1,8 @@
-#include "FileParser.h"
+#include "File.h"
 #include "PlayerException.h"
 #include <regex>
 
-void FileParser::inspect(const std::string &input) const {
+void File::inspect(const std::string &input) const {
     static const std::string fileTypeFormat = "(.*)";
     static const std::string metaDataFormat = "(\\|((.*):(.*)\\|)*)";
     static const std::string arbitraryFileContentFormat = "(.*)";
@@ -10,8 +10,6 @@ void FileParser::inspect(const std::string &input) const {
     static const std::regex fileRgx(fileTypeFormat + metaDataFormat + arbitraryFileContentFormat);
     static const std::regex fileAndContentRgx(fileTypeFormat + metaDataFormat + structuredFileContentFormat);
     std::smatch sm;
-
-    //TODO unsupported type
 
     if (!std::regex_match(input, fileRgx)) {
         throw CorruptFileException();
@@ -21,17 +19,16 @@ void FileParser::inspect(const std::string &input) const {
     }
 }
 
-FileType FileParser::deduceType(const std::string &input) const {
+void File::deduceType(const std::string &input) {
     static const std::string fileTypeSearchFormat = "[^\\|]*(?=\\|)";
     static const std::regex fileTypeRgx(fileTypeSearchFormat);
     std::smatch typeMatch;
     std::regex_search(input, typeMatch, fileTypeRgx);
 
-    return typeMatch.str();
+    type = typeMatch.str();
 }
 
-
-MetaData FileParser::extractMetaData(const std::string &input) const {
+void File::extractMetaData(const std::string &input) {
     std::map<std::string, std::string> dataMap;
     static const std::string dataFieldFormat = "\\|([^:]*):([^\\|]*)";
     static const std::regex dataFieldRgx(dataFieldFormat);
@@ -45,24 +42,33 @@ MetaData FileParser::extractMetaData(const std::string &input) const {
         log = dataMatch.suffix();
     }
 
-    return dataMap;
+    metaData = dataMap;
 }
 
-FileContent FileParser::extractContent(const std::string &input) const {
+void File::extractContent(const std::string &input) {
     static const std::string contentSearchFormat = ".*\\|(.*)";
     static const std::regex contentSearchRgx(contentSearchFormat);
     std::smatch contentMatch;
     std::regex_search(input, contentMatch, contentSearchRgx);
 
-    return contentMatch.str(1);
+    content = contentMatch.str(1);
 }
 
-ParsedFile FileParser::parse(const File &file) const {
-    inspect(file.description);
-    auto type = deduceType(file.description);
-    auto metaData = extractMetaData(file.description);
-    auto content = extractContent(file.description);
-
-    return std::make_pair(type, std::make_pair(metaData, content));
+File::File(const std::string &str) {
+    inspect(str);
+    deduceType(str);
+    extractMetaData(str);
+    extractContent(str);
 }
 
+const FileType &File::getFileType() const {
+    return type;
+}
+
+const MetaData &File::getMetaData() const {
+    return metaData;
+}
+
+const FileContent &File::getFileContent() const {
+    return content;
+}

@@ -6,6 +6,7 @@
 
 class Audio : public IMedia {
 public:
+    //TODO referencja lub move constructor
     Audio(const MetaData &metaData, const FileContent &content) :
         IMedia(metaData, content) {};
     ~Audio() override = default;

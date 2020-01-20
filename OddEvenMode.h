@@ -3,11 +3,11 @@
 
 #include "IPlayMode.h"
 
-class OddEvenMode : IPlayMode {
+class OddEvenMode : public IPlayMode {
 public:
     OddEvenMode() = default;
     ~OddEvenMode() = default;
-    void play(const std::vector<std::shared_ptr<Playable>> &medias) override;
+    void play(const std::vector<std::shared_ptr<IPlayable>> &medias) override;
 };
 
 std::shared_ptr<OddEvenMode> createOddEvenMode();

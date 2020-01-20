@@ -1,7 +1,7 @@
 #include "SequenceMode.h"
 #include <memory>
 
-void SequenceMode::play(const std::vector<std::shared_ptr<Playable>> &medias) {
+void SequenceMode::play(const std::vector<std::shared_ptr<IPlayable>> &medias) {
     for (auto const &it: medias) {
         it->play();
     }

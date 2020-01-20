@@ -5,23 +5,22 @@
 #include <map>
 #include "File.h"
 
+using FileType = std::string;
+using MetaData = std::map<std::string, std::string>;
+using FileContent = std::string;
+using FileData = std::pair<std::map<std::string, std::string>, std::string>;
+using ParsedFile = std::pair<FileType, FileData>;
 
 class FileParser {
 private:
-    void inspect(const std::string &input);
-    std::string deduceType(const std::string &input);
-    std::map<std::string, std::string> extractMetaData(const std::string &input); //TODO moze sharedPtr? (nie znam sie wiec jak na razie w return robi sie kopia)
-    std::string extractContent(const std::string &input);
+    void inspect(const std::string &input) const;
+    [[nodiscard]] FileType deduceType(const std::string &input) const;
+    [[nodiscard]] MetaData extractMetaData(const std::string &input) const ; //TODO moze sharedPtr? (nie znam sie wiec jak na razie w return robi sie kopia)
+    [[nodiscard]] FileContent extractContent(const std::string &input) const;
 public:
     FileParser() = default;
     ~FileParser() = default;
-    std::tuple<std::string, std::map<std::string, std::string>, std::string> parseFile(const File &file);
-};
-
-class InvalidFileFormatException : public std::exception {
-};
-
-class InvalidFileContentException : public std::exception {
+    [[nodiscard]] ParsedFile parse(const File &file) const;
 };
 
 #endif //PLAYLIST_FILEPARSER_H

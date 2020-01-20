@@ -6,7 +6,6 @@
 #include <boost/test/included/unit_test.hpp>
 #include <boost/test/output_test_stream.hpp>
 
-#include "Video.h"
 #include <memory>
 
 struct cout_redirect {
@@ -22,12 +21,16 @@ private:
 
 BOOST_AUTO_TEST_SUITE(lib_playlist)
 
-BOOST_AUTO_TEST_CASE(playlist) {
-    Playlist playlist1("playlist1");
-    playlist1.add(std::make_shared<Video>("abc"));
-    playlist1.add(std::make_shared<Video>("bcd"));
-    playlist1.remove(1);
-    playlist1.remove();
-}
+    BOOST_AUTO_TEST_CASE(smth) {
+        Player player;
+
+        auto armstrong = player.createPlaylist("armstrong");
+        auto whatAWonderfulWorld = player.openFile(File("audio|artist:Louis Armstrong|title:What a Wonderful World|"
+                                                        "I see trees of green, red roses too..."));
+        armstrong->add(whatAWonderfulWorld);
+        armstrong->setMode(createSequenceMode());
+
+        armstrong->play();
+    }
 
 BOOST_AUTO_TEST_SUITE_END()

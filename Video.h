@@ -2,17 +2,13 @@
 #define PLAYLIST_VIDEO_H
 
 #include "IMedia.h"
-#include <utility>
 
-//TODO szyfrowanie
 class Video : public IMedia {
-private:
-    FileContent decodeROT13(const FileContent &content);
 public:
-    Video(const MetaData &metaData, const FileContent &content) :
-        IMedia(metaData, decodeROT13(content)) {};
+    explicit Video(const std::string &name) : IMedia(name) {};
     ~Video() override = default;
     void play() override;
 };
+
 
 #endif //PLAYLIST_VIDEO_H

@@ -1,13 +1,10 @@
 #include "Playlist.h"
-#include <iostream>
 
-//TODO exceptions!!!!!!!!!!
-
-void Playlist::add(const std::shared_ptr<IPlayable> &element) {
+void Playlist::add(const std::shared_ptr<IMedia> &element) {
     vector.push_back(element);
 }
 
-void Playlist::add(const std::shared_ptr<IPlayable> &element, size_t position) {
+void Playlist::add(const std::shared_ptr<IMedia> &element, size_t position) {
     auto it = vector.emplace(vector.begin() + position, element);
 }
 
@@ -24,6 +21,5 @@ void Playlist::setMode(const std::shared_ptr<IPlayMode> &mode) {
 }
 
 void Playlist::play() {
-    std::cout << "Playlist [" << name << "]" << std::endl;
     playMode->play(vector);
 }

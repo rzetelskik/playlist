@@ -1,8 +1,6 @@
 #include "Playlist.h"
 #include <iostream>
 
-//TODO exceptions!!!!!!!!!!
-
 void Playlist::add(const std::shared_ptr<IPlayable> &element) {
     vector.push_back(element);
 }

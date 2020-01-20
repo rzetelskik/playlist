@@ -1,10 +1,6 @@
 #include "Video.h"
 #include <iostream>
 
-void Video::play() {
-    std::cout << "Movie " << "[" << metaData.at("title") << ", " << metaData.at("year") << "]: " << content << std::endl;
-}
-
 FileContent Video::decodeROT13(const FileContent &content) {
     FileContent decoded;
     for (char c : content) {
@@ -12,4 +8,9 @@ FileContent Video::decodeROT13(const FileContent &content) {
     }
 
     return decoded;
+}
+
+void Video::play() {
+    std::cout << "Movie " << "[" << metaData.at("title") << ", " << metaData.at("year") << "]: " << content
+              << std::endl;
 }

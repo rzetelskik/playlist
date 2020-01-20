@@ -6,6 +6,7 @@
 
 class IPlayable {
 public:
+    //TODO boost range
     IPlayable() = default;
     virtual ~IPlayable() {};
     virtual void play() = 0;

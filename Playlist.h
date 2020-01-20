@@ -15,7 +15,7 @@ private:
     std::shared_ptr<IPlayMode> playMode;
     std::string name;
 public:
-    explicit Playlist(std::string name) : name(std::move(name)), playMode(createSequenceMode()) {};
+    explicit Playlist(const std::string &name) : name(name), playMode(createSequenceMode()) {};
     ~Playlist() override = default;
     void add(const std::shared_ptr<IPlayable> &element);
     void add(const std::shared_ptr<IPlayable> &element, size_t position);

@@ -6,8 +6,8 @@
 
 class Audio : public IMedia {
 public:
-    Audio(MetaData metaData, Content content) :
-        IMedia(std::move(metaData), std::move(content)) {};
+    Audio(const MetaData &metaData, const FileContent &content) :
+        IMedia(metaData, content) {};
     ~Audio() override = default;
     void play() override;
 };

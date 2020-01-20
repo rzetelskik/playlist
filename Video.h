@@ -6,9 +6,11 @@
 
 //TODO szyfrowanie
 class Video : public IMedia {
+private:
+    FileContent decodeROT13(const FileContent &content);
 public:
-    Video(MetaData metaData, Content content) :
-        IMedia(std::move(metaData), std::move(content)) {};
+    Video(const MetaData &metaData, const FileContent &content) :
+        IMedia(metaData, decodeROT13(content)) {};
     ~Video() override = default;
     void play() override;
 };

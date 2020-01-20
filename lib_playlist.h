@@ -7,7 +7,6 @@
 #include "Video.h"
 #include "File.h"
 #include "Playlist.h"
-#include "FileParser.h"
 #include "ShuffleMode.h"
 #include "OddEvenMode.h"
 #include "PlayerException.h"
@@ -19,7 +18,6 @@ using MapFunction = std::function<std::shared_ptr<IMedia>(const MetaData &metaDa
 
 class Player {
 private:
-    const FileParser fileParser;
     const std::map<FileType, MapFunction> factoryMapping{
             {"audio", [](auto metaData, auto content) { return std::make_shared<Audio>(metaData, content); }},
             {"video", [](auto metaData, auto content) { return std::make_shared<Video>(metaData, content); }}

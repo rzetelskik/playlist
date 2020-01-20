@@ -6,14 +6,14 @@
 #include <utility>
 
 using MetaData = std::map<std::string, std::string>;
-using Content = std::string;
+using FileContent = std::string;
 
 class IMedia : public IPlayable {
 protected:
     const MetaData metaData;
-    const Content content;
+    const FileContent content;
 public:
-    IMedia(MetaData metaData, Content content) :
+    IMedia(MetaData metaData, FileContent content) :
         metaData(std::move(metaData)), content(std::move(content)) {};
     virtual ~IMedia() {};
 };

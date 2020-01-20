@@ -1,16 +1,21 @@
 #ifndef PLAYLIST_IMEDIA_H
 #define PLAYLIST_IMEDIA_H
 
-#include <string>
+#include "IPlayable.h"
+#include <map>
 #include <utility>
 
-class IMedia {
-private:
-    const std::string name;
+using MetaData = std::map<std::string, std::string>;
+using FileContent = std::string;
+
+class IMedia : public IPlayable {
+protected:
+    const MetaData metaData;
+    const FileContent content;
 public:
-    explicit IMedia(std::string name) : name(std::move(name)) {};
+    IMedia(MetaData metaData, FileContent content) :
+        metaData(std::move(metaData)), content(std::move(content)) {};
     virtual ~IMedia() {};
-    virtual void play() = 0;
 };
 
 

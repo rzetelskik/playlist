@@ -3,7 +3,7 @@
 #include <numeric>
 #include <algorithm>
 
-void ShuffleMode::play(const std::vector<std::shared_ptr<IMedia>> &medias) {
+void ShuffleMode::play(const std::vector<std::shared_ptr<IPlayable>> &medias) {
     std::vector<size_t> ivector(medias.size());
     std::iota(ivector.begin(), ivector.end(), 0);
     std::shuffle(ivector.begin(), ivector.end(), generator);

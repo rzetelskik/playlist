@@ -2,7 +2,7 @@
 #define PLAYLIST_SHUFFLEMODE_H
 
 #include "IPlayMode.h"
-#include "IMedia.h"
+#include "IPlayable.h"
 #include <random>
 
 class ShuffleMode : public IPlayMode {
@@ -11,7 +11,7 @@ private:
 public:
     explicit ShuffleMode(int seed) : generator(seed) {};
     ~ShuffleMode() = default;
-    void play(const std::vector<std::shared_ptr<IMedia>> &medias) override;
+    void play(const std::vector<std::shared_ptr<IPlayable>> &medias) override;
 };
 
 std::shared_ptr<ShuffleMode> createShuffleMode(int seed);

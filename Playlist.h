@@ -14,6 +14,7 @@ private:
     std::vector<std::shared_ptr<IPlayable>> vector;
     std::shared_ptr<IPlayMode> playMode;
     std::string name;
+    bool contains(const IPlayable *entity) const override;
 public:
     explicit Playlist(const std::string &name) : name(name), playMode(createSequenceMode()) {};
     ~Playlist() override = default;

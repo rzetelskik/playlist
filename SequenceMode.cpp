@@ -8,5 +8,6 @@ void SequenceMode::play(const std::vector<std::shared_ptr<IPlayable>> &medias) {
 }
 
 std::shared_ptr<SequenceMode> createSequenceMode() {
-    return std::make_shared<SequenceMode>();
+    auto static sequenceMode = std::make_shared<SequenceMode>();
+    return sequenceMode;
 };

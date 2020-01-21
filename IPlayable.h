@@ -3,13 +3,17 @@
 
 #include <string>
 #include <utility>
+#include <vector>
+#include <memory>
 
 class IPlayable {
+private:
+    virtual bool contains(const IPlayable *entity) const = 0;
 public:
-    //TODO boost range
     IPlayable() = default;
     virtual ~IPlayable() {};
     virtual void play() = 0;
+    friend class Playlist;
 };
 
 

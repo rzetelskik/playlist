@@ -12,5 +12,6 @@ void OddEvenMode::play(const std::vector<std::shared_ptr<IPlayable>> &medias) {
 }
 
 std::shared_ptr<OddEvenMode> createOddEvenMode() {
-    return std::make_shared<OddEvenMode>();
+    auto static oddEvenMode = std::make_shared<OddEvenMode>();
+    return oddEvenMode;
 }

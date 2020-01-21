@@ -33,23 +33,13 @@ void Playlist::play() {
     playMode->play(vector);
 }
 
-//std::vector<std::shared_ptr<IPlayable>>::iterator Playlist::submembers() {
-//    return vector.begin();
-//}
-//
-//std::vector<std::shared_ptr<IPlayable>>::iterator Playlist::submembersEnd() {
-//    return vector.end();
-//}
-
 bool Playlist::contains(const IPlayable *entity) const {
-    if (entity == this) {
+    if (entity == this)
         return true;
-    }
 
     for (const auto &element: vector) {
-        if (element->contains(entity)) {
+        if (element->contains(entity))
             return true;
-        }
     }
     return false;
 }

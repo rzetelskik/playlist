@@ -12,16 +12,14 @@ FileContent Video::decodeROT13(const FileContent &content) {
 }
 
 void Video::play() {
-    std::cout << "Movie " << "[" << metaData.at("title") << ", " << metaData.at("year") << "]: " << content
-              << std::endl;
+    std::cout << "Movie " << "[" << metaData.at("title") << ", " << metaData.at("year")
+              << "]: " << content << std::endl;
 }
 
-Video::Video(const MetaData &metaData, const FileContent &content) :
-        IMedia(metaData, decodeROT13(content)) {
-        if (metaData.find("year") == metaData.end() ||
-            metaData.find("title") == metaData.end()) {
-            throw InsufficientMetaDataException();
-        }
+Video::Video(const MetaData &metaData, const FileContent &content) : IMedia(metaData, decodeROT13(content)) {
+    if (metaData.find("year") == metaData.end() || metaData.find("title") == metaData.end()) {
+        throw InsufficientMetaDataException();
+    }
 }
 
 

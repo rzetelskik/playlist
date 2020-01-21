@@ -8,20 +8,12 @@
 
 class IPlayable {
 private:
-    virtual bool contains(const IPlayable *entity) const { return entity == this; };
+    virtual bool contains(const IPlayable *entity) const = 0;
 public:
-    //TODO boost range
     IPlayable() = default;
-
     virtual ~IPlayable() {};
-
     virtual void play() = 0;
-
     friend class Playlist;
-
-//    virtual std::vector<std::shared_ptr<IPlayable>>::iterator submembers() { return it; };
-//
-//    virtual std::vector<std::shared_ptr<IPlayable>>::iterator submembersEnd() { return it; };
 };
 
 

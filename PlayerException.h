@@ -29,4 +29,18 @@ public:
     }
 };
 
+class PlaylistCycleException : public PlayerException {
+public:
+    [[nodiscard]] const char *what() const noexcept override {
+        return "playlist cycle";
+    }
+};
+
+class InsufficientMetaDataException : public PlayerException {
+public:
+    [[nodiscard]] const char *what() const noexcept override {
+        return "insufficient meta data";
+    }
+};
+
 #endif //PLAYLIST_PLAYEREXCEPTION_H

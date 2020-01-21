@@ -40,6 +40,20 @@ int main() {
     mishmash->setMode(createSequenceMode());
     mishmash->play();
 
+//    auto a = player.createPlaylist("a");
+//    auto b = player.createPlaylist("b");
+//    auto c = player.createPlaylist("c");
+//    a->add(b);
+//    b->add(c);
+//    a->add(armstrong);
+//    b->add(mishmash);
+//
+//
+//    try {
+//        c->add(a);
+//    } catch (std::exception &e) {
+//        std::cout << e.what() << std::endl;
+//    }
     try {
         auto unsupported = player.openFile(File("mp3|artist:Unsupported|title:Unsupported|Content"));
     } catch (PlayerException const& e) {

@@ -8,7 +8,7 @@
 
 class IPlayable {
 private:
-    virtual bool contains(const IPlayable *entity) const = 0;
+    virtual bool contains(const IPlayable *entity) const { return this == entity; };
 public:
     IPlayable() = default;
     virtual ~IPlayable() {};

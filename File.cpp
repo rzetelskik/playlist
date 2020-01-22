@@ -37,6 +37,9 @@ void File::extractMetaData(const std::string &input) {
     while (std::regex_search(log, dataMatch, dataFieldRgx)) {
         std::string name = dataMatch.str(1);
         std::string value = dataMatch.str(2);
+        if (name == "year" && !is_number(value)) {
+            throw InvalidYearException();
+        }
         auto result = metaData.insert({name, value});
         if (!result.second) result.first->second = value;
 
@@ -70,4 +73,11 @@ const MetaData &File::getMetaData() const {
 
 const FileContent &File::getFileContent() const {
     return content;
+}
+
+bool File::is_number(const std::string& s)
+{
+    std::string::const_iterator it = s.begin();
+    while (it != s.end() && std::isdigit(*it)) ++it;
+    return !s.empty() && it == s.end();
 }

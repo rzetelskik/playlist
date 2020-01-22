@@ -43,4 +43,11 @@ public:
     }
 };
 
+class InvalidYearException : public PlayerException {
+public:
+    [[nodiscard]] const char *what() const noexcept override {
+        return "invalid year exception";
+    }
+};
+
 #endif //PLAYLIST_PLAYEREXCEPTION_H

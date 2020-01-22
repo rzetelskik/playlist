@@ -11,7 +11,7 @@ using FileData = std::pair<std::map<std::string, std::string>, std::string>;
 
 class File {
 private:
-    bool is_number(const std::string& s);
+    bool isNumber(const std::string& s);
     FileType type;
     MetaData metaData;
     FileContent content;

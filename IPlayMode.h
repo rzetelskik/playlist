@@ -8,6 +8,8 @@
 class IPlayMode {
 public:
     virtual void play(const std::vector<std::shared_ptr<IPlayable>> &medias) = 0;
+    IPlayMode() = default;
+    virtual ~IPlayMode() {};
 };
 
 #endif //PLAYLIST_IPLAYMODE_H

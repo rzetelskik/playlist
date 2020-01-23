@@ -7,13 +7,11 @@
 #include <memory>
 
 class IPlayable {
-private:
-    virtual bool contains(const IPlayable *entity) const { return this == entity; };
 public:
+    virtual bool contains(const IPlayable *entity) const { return this == entity; };
     IPlayable() = default;
     virtual ~IPlayable() {};
     virtual void play() = 0;
-    friend class Playlist;
 };
 
 

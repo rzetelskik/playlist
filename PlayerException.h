@@ -29,6 +29,20 @@ public:
     }
 };
 
+class PlaylistOutOfRangeException : public PlayerException {
+public:
+    [[nodiscard]] const char *what() const noexcept override {
+        return "playlist out of range";
+    }
+};
+
+class EmptyPlaylistException : public PlayerException {
+public:
+    [[nodiscard]] const char *what() const noexcept override {
+        return "empty playlist";
+    }
+};
+
 class PlaylistCycleException : public PlayerException {
 public:
     [[nodiscard]] const char *what() const noexcept override {

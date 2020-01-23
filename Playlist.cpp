@@ -10,17 +10,22 @@ void Playlist::add(const std::shared_ptr<IPlayable> &element) {
 }
 
 void Playlist::add(const std::shared_ptr<IPlayable> &element, size_t position) {
-    if (element->contains(this)) {
+    if (element->contains(this))
         throw PlaylistCycleException();
-    }
+    if (position > vector.size())
+        throw PlaylistOutOfRangeException();
     auto it = vector.emplace(vector.begin() + position, element);
 }
 
 void Playlist::remove() {
+    if (vector.empty())
+        throw EmptyPlaylistException();
     vector.pop_back();
 }
 
 void Playlist::remove(size_t position) {
+    if (position > vector.size())
+        throw PlaylistOutOfRangeException();
     vector.erase(vector.begin() + position);
 }
 
@@ -41,5 +46,6 @@ bool Playlist::contains(const IPlayable *entity) const {
         if (element->contains(entity))
             return true;
     }
+
     return false;
 }

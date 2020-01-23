@@ -16,7 +16,7 @@ private:
     std::string name;
 public:
     bool contains(const IPlayable *entity) const override;
-    explicit Playlist(const std::string &name) : name(name), playMode(createSequenceMode()) {};
+    explicit Playlist(std::string name) : name(std::move(name)), playMode(createSequenceMode()) {};
     ~Playlist() override = default;
     void add(const std::shared_ptr<IPlayable> &element);
     void add(const std::shared_ptr<IPlayable> &element, size_t position);

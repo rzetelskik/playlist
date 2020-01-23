@@ -21,4 +21,5 @@ private:
 
 BOOST_AUTO_TEST_SUITE(lib_playlist)
 
+
 BOOST_AUTO_TEST_SUITE_END()
